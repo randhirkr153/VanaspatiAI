@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - HUGGINGFACE_MODEL_ID=gianlab/swin-tiny-patch4-window7-224-finetuned-plantdisease
+      - USE_MOCK_MODEL=false
+      - DATABASE_URL=sqlite:///./plant_ai.db
+      - CORS_ORIGINS=http://localhost:5173,http://localhost
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=http://localhost:8000
+    ports:
+      - "80:80"
+    depends_on:
+      - backend

@@ -1,0 +1,22 @@
+# Python Virtual Environment
+venv/
+.venv/
+env/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+
+# Database & SQLite
+*.db
+*.sqlite
+*.sqlite3
+plant_ai.db
+
+# Environment variables & secrets
+.env
+!.env.example
+
+# Logs & temp
+*.log
+.cache/
